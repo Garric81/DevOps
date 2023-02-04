@@ -1,5 +1,7 @@
 # DevOps
-DevSecOps 
+Один проект  где будет лпжать мой рабочий портфель
+[ ] Git
+[ ] DevSecOps 
 Terrafom
 Ansible
 Docker
