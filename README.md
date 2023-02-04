@@ -1,12 +1,22 @@
 # DevOps
-Один проект  где будет лпжать мой рабочий портфель
+Один проект  где будет лежать мой рабочий портфель
+
 [ ] Git
-[ ] DevSecOps 
+
+[ ] DevSecOps
+
 Terrafom
+
 Ansible
+
 Docker
+
 AWS
+
 K8
+
 Powershell
+
 Bash
+
 Python
