@@ -6,3 +6,4 @@
 
  docker run --name my_mongo -d mongo    # запуск контейнера
  docker container prune                 # удаление контейнеров
+ docker rm $(docker ps -a -q -f status=exited)

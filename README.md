@@ -41,7 +41,7 @@ Here are some ideas to get you started:
 * [x] Прокачать свой профиль на Git Hub
 * [x] Git (в крвтце уже работаю)
 * [x] Создать свой первый проект на Git Hub (созал но много мусора)
-* [ ] Docker (начало  положено)
+* [ ] Docker
 * [ ] Ansible
 * [ ] Terrafom and AWS
 * [ ] k8
