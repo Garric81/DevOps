@@ -1,0 +1,14 @@
+#Example
+#создаем инстанс aws ec2 с terraform
+provider "aws" {
+  region = "ap-south-1"
+
+}
+resource "aws_instance" "ec2" {
+  ami = "ami-019f0583716f0aec4" //ap-south-1
+  instance_type = "t2.micro"
+  tags = {
+    Name = "example"
+  }
+}
+#ami-id можно получить на amazon marketplace
