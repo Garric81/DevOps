@@ -1,0 +1,7 @@
+---
+ - hosts: all
+   tasks:
+     - name: show ip adress
+       debug:
+         msg: >
+            This host used  ip adress {{ansible_facts.default_ipv4.address }}
