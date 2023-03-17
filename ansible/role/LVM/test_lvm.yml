@@ -1,0 +1,75 @@
+#########################################################################################################
+# ideya  Borovichenko                                                                                   #
+# Create BorovichenkoNG                                                                                 #
+#                                                                                                       #
+#                                                                                                       #
+#########################################################################################################
+---
+- name: LVM Setup
+  hosts: webserver
+  gather_facts: true
+  become: yes
+  tasks:
+#    - name: Collect stats for hardware
+#      ansible.builtin.setup:
+#       gather_subset:
+#          - hardware
+#    - name: Print the stat output for devices
+#      ansible.builtin.debug:
+#        var: hostvars[inventory_hostname].ansible_devices
+    - name: Print the disk size only for sd disks
+      ansible.builtin.debug:
+        msg: "{{ ansible_devices[item].size }}"
+      loop: "{{ ansible_devices.keys() | map('regex_search', 'sd.*') | select('string') | list }}"
+#    - name: Print the gateway for each host when defined # print host name  and  gateway
+#      ansible.builtin.debug:
+#        msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+#      when: ansible_default_ipv4.gateway is defined
+#    - name: Print the Arhitecture
+#      ansible.builtin.debug:
+#         msg: System {{ ansible_architecture }}
+#      when: ansible_architecture is defined
+
+    - name: Print the ansible_cmdline вывести спиок  команды
+      ansible.builtin.debug:
+        msg: System {{ ansible_cmdline }}
+      when: ansible_cmdline is defined
+
+    - name: list volume groups вывести спиок Vomume group
+      ansible.builtin.debug: msg="echo volume groups is  {{ item.key }} has {{ item.value.free_g }}"
+      with_dict: "{{ ansible_lvm.vgs }}"
+      when: not item.key  == "root"
+    - debug:
+        var: ansible_lvm
+
+#    - set_fact:
+#      ansible_become: yes
+#      with_dict: "{{ ansible_lvm.vgs }}"
+#      when: not item.key  == "root"
+#    - name: debug version os
+#      ansible.builtin.debug:
+#        var: "{{ item }}"
+#      with_items:
+#        - ansible_distribution
+#        - ansible_distribution_major_version
+#        - ansible_distribution_version
+### деле можно не обрабатывать в этом плейбуке винду. т.к. случаев появления винды и линухи в одной куче не предвидится
+### но раз уж есть, пусть остается
+### выгоняем винду из плейбкука
+#    - name: End the play for hosts that run Windows
+#      meta: end_host
+#      when:
+#        - ansible_distribution == 'Windows'
+### возвращаем become
+#    - set_fact:
+#        ansible_become: yes
+#        when:
+#          - ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS' or ansible_distribution == 'Debian'
+#######################################################################################################################
+### и продолжаем с линухой
+#    - name: Include a plays for CentOS
+#      include_tasks: centos.yml
+#      when:
+#          - ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS'
+#
+###################################################################################################################

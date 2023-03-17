@@ -1,0 +1,7 @@
+---
+- name: detect lvm setup
+    setup:
+        filter: "ansible_lvm"
+        gather_subset: "!all,!min,hardware"
+     register: lvm_facts
+- debug: var=lvm_facts

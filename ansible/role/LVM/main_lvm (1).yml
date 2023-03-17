@@ -1,0 +1,21 @@
+---
+  - name: 
+    hosts: webserver
+    vars:
+        dev_name: '{{ hostvars[inventory_hostname]["facter_mountpoints"]["/data"]["device"]| basename}}'
+    tasks:
+      - name: get device name
+        set_fact:
+          device_name: "{{ item.key }}"
+        no_log: false
+        with_dict: "{{ ansible_devices }}"
+        when:  " dev_name in  item.value.holders"
+
+      - name: show all values for selected device name
+        debug:
+          var: "{{ item }}"
+        with_items:
+           ansible_devices[device_name]
+
+      - name: show only device name
+        debug: var=device_name
