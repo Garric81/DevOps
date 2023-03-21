@@ -6,7 +6,7 @@
 #########################################################################################################
 ---
 - name: LVM Setup
-  hosts: webserver
+  hosts: all
   gather_facts: true
   become: yes
   tasks:
@@ -42,6 +42,13 @@
     - debug:
         var: ansible_lvm
 
+    - name: detect lvm setup
+        setup:
+            filter: "ansible_lvm"
+            gather_subset: "!all,!min,hardware"
+           register: lvm_facts
+            - debug: var=lvm_facts
+
 #    - set_fact:
 #      ansible_become: yes
 #      with_dict: "{{ ansible_lvm.vgs }}"
@@ -73,3 +80,8 @@
 #          - ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS'
 #
 ###################################################################################################################
+###       https://askubuntu.com/questions/202613/how-do-i-check-whether-i-am-using-lvm ##############################
+if  grep -Pq '/dev/(mapper/|disk/by-id/dm)' /etc/fstab  ||  mount | grep -q /dev/mapper/
+then
+    echo "LVM is in use"
+fi

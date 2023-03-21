@@ -1,6 +1,6 @@
 ---
   - name: 
-    hosts: bngtest
+    hosts: all
     vars:
         dev_name: '{{ hostvars[inventory_hostname]["facter_mountpoints"]["/data"]["device"]| basename}}'
     tasks:
