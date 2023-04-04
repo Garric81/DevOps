@@ -41,14 +41,14 @@ Here are some ideas to get you started:
 🚧 **Мои задачи на ближайшее время:**
 <!-- TODO-IST:START -->
 * [x] Прокачать свой профиль на Git Hub
-* [x] Git (в крвтце уже работаю)
+* [x] Git (в кратце уже работаю)
 * [x] Создать свой первый проект на Git Hub (созал но много мусора)
 * [ ] Docker https://github.com/Garric81/docker-demo.git
 * [x] Ansible на  данный срмен  добавлены playbooks create LVM
 * [ ] Terrafom and AWS
 * [ ] k8
 * [ ] DevSecOps
-* [ ] Powershell
-* [ ] Bash
+* [x] Powershell (по мелочи)
+* [x] Bash (по мелочи)
 * [ ] Python
 <!-- TODO-IST:END -->
