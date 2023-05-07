@@ -3,28 +3,28 @@
     name: developers
     state: present
 
-- name: Create the user 'bender'
+- name: Create the user 'devops'
   user:
-    name: bender
+    name: devops
     shell: /bin/bash
     password: $6$OStSJfA6FA$ffSDaJBWfSpmnwlC6QWJwLG3PgZWQhPYUSezmRvSiUFpwSWy/57KuUuLg/4yGBpKx2TWYsPDz9Yq7nL2I2XT3/
 
-- name: Assign 'bender' to the 'developers' group
+- name: Assign 'devops' to the 'developers' group
   user:
-    name: bender
+    name: devops
     groups: developers
     append: yes
 
 - name: Create a directory named 'engineering'
   file:
-    path: /opt/engineering
+    path: /home/devops
     state: directory
     mode: 0750
     group: developers
 
 - name: Create a file in the engineering directory
   file:
-    path: "/opt/engineering/private.txt"
+    path: "/home/devops/private.txt"
     state: touch
     mode: 0770
     group: developers
