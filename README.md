@@ -45,6 +45,7 @@ Here are some ideas to get you started:
 * [x] Создать свой первый проект на Git Hub (созал но много мусора)
 * [ ] Docker https://github.com/Garric81/docker-demo.git
 * [x] Ansible на  данный момент  добавлены playbooks create LVM
+* [x] My git lab
 * [ ] Terrafom and AWS
 * [ ] k8
 * [ ] DevSecOps
